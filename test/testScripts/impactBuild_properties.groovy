@@ -82,6 +82,10 @@ finally {
 	println "*FAILED IMPACT BUILD ON PROPERT CHANGE TEST  RESULTS*\n" + assertionList
 	println "\n**END OF FAILED IMPACT BUILD ON PROPERTY CHANGE TEST RESULTS**"
 	println "***"
+		//set the return value
+	if (argMap.size() > 0){
+		argMap.passed = false
+	}
   }
 }
 // script end

@@ -17,10 +17,20 @@ try {
 		println("** Invoking test scripts according to test list order: ${props.test_testOrder}")
 		
 		String[] testOrder = props.test_testOrder.split(',')
-		
+
+		// Send a flag with the call to runscript as a map Object
+		// when it returns you can check the value.
+
+		def resultsMap = [passed: true]
 		testOrder.each { script ->
 		   // run the test script	
-		   runScript(new File("testScripts/$script"), [:])
+		   runScript(new File("testScripts/$script"), resultsMap)
+		   if (resultsMap.passed == false){
+			println "Tests in " + script + " failed"
+			resultsMap.passed = true
+		   } else {
+			println "***" + resultsMap.passed + "***"
+		   }
 	    }
 	}
 	else {

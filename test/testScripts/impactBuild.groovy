@@ -8,6 +8,8 @@ import com.ibm.jzos.ZFile
 @Field BuildProperties props = BuildProperties.getInstance()
 println "\n** Executing test script impactBuild.groovy"
 
+
+
 // Get the DBB_HOME location
 def dbbHome = EnvVars.getHome()
 if (props.verbose) println "** DBB_HOME = ${dbbHome}"
@@ -58,6 +60,10 @@ finally {
 	println "*FAILED IMPACT BUILD TEST RESULTS*\n" + assertionList
 	println "\n**END OF FAILED IMPACT BUILD TEST RESULTS**"
 	println "***"
+	//set the return value
+	if (argMap.size() > 0){
+		argMap.passed = false
+	}
   }
 }
 // script end  

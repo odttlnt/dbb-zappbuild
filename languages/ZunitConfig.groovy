@@ -49,7 +49,7 @@ buildUtils.createLanguageDatasets(langQualifier)
 	}
 	
 	// copy build file and dependency files to data sets
-	buildUtils.copySourceFiles(buildUtils.getAbsolutePath(buildFile), props.zunit_bzucfgPDS, 'zunit_dependenciesDatasetMapping', null, dependencyResolver)
+	buildUtils.copySourceFiles(buildFile, props.zunit_bzucfgPDS, 'zunit_dependenciesDatasetMapping', null, dependencyResolver)
 
 	// Parse the playback from the bzucfg file
 	Boolean hasPlayback = false
@@ -61,6 +61,7 @@ buildUtils.createLanguageDatasets(langQualifier)
 	String jcl = jobcard
 	jcl += """\
 \n//*
+//BZULIB  JCLLIB  ORDER=(${props.SBZUSAMP})
 //BADRC   EXEC PGM=IEFBR14
 //DD        DD DSN=&SYSUID..BADRC,DISP=(MOD,CATLG,DELETE),
 //             DCB=(RECFM=FB,LRECL=80),UNIT=SYSALLDA,

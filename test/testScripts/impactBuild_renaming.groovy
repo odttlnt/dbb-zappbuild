@@ -67,6 +67,10 @@ finally {
 		println "*FAILED IMPACT BUILD TEST RESULTS*\n" + assertionList
 		println "\n**END OF FAILED IMPACT BUILD TEST RESULTS**"
 		println "***"
+		//set the return value
+		if (argMap.size() > 0){
+			argMap.passed = false
+		}
 	}
 }
 // script end
